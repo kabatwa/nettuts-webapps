@@ -1,6 +1,6 @@
 define([
   'backbone',
-  'backbone.localstorage'
+  'libs/backbone.localStorage'
 ],function(Backbone){
   'use strict';
 

@@ -1,0 +1,1 @@
+define(["backbone","libs/backbone.localStorage"],function(e){var t=e.Model.extend({localStorage:new e.LocalStorage("AppSettings"),defaults:{backgroundColor:"#999999",celsius:!0,welcomeMessage:"Welcome to Weather Watcher"}});return t});

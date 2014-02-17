@@ -1,0 +1,1 @@
+define(["backbone","app/models/place","libs/backbone.localStorage"],function(e,t){var n=e.Collection.extend({localStorage:new e.LocalStorage("Places"),model:t});return n});
