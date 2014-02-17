@@ -3,8 +3,9 @@ define([
     'underscore',
     'backbone',
     'app/collections/places',
-    'app/views/place'
-],function($,_,Backbone,PlacesCollection,PlaceView){
+    'app/views/place',
+    'app/views/add_place'
+],function($,_,Backbone,PlacesCollection,PlaceView,AddPlaceView){
   'use strict';
 
   var DashView=Backbone.View.extend({
@@ -12,10 +13,16 @@ define([
     html:[
         '<h3>Dashboard page</h3>',
         '<div id="places-list" class="clearfix">Loading...</div>',
-        '<div id="dash-buttons"></div>'
+        '<div id="dash-buttons">',
+        '<button id="btn-add-new" type="button" class="btn btn-default">Add New</button>',
+        '</div>'
     ].join(''),
 
     views:[],
+
+    events:{
+        'click #btn-add-new':'addNewPlace'
+    },
 
     initialize:function(){
       this.$el.html(this.html);
@@ -47,6 +54,15 @@ define([
         this.$placesList.html('Sorry, there are no places to display, please add some.');
       }
         return this;
+    },
+
+    addNewPlace:function(e){
+      var modal=new AddPlaceView({
+        title:'Add a new place',
+        id:'modal-add-new-place',
+        collection:this.collection
+      });
+      modal.show();
     },
 
     cleanUp:function(){
